@@ -1,0 +1,32 @@
+<ion-content padding class="registration">
+  <ion-card padding>
+    <img src="../../assets/icon/favicon.ico">
+  </ion-card>
+  <form [formGroup]="registForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="stdInfo.name" formControlName="name" name="name"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('name')" danger padding-left>Invalid Name</p>
+      <ion-item>
+        <ion-label floating>Phone</ion-label>
+        <ion-input type="number" [(ngModel)]="stdInfo.phone" formControlName="phone" name="phone"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('phone')" danger padding-left>Invalid Phone</p>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" [(ngModel)]="stdInfo.email" formControlName="email" name="email"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('email')" danger padding-left>Invalid Email</p>
+      <ion-item>
+        <ion-label>TracK</ion-label>
+        <ion-select name="track" [(ngModel)]="stdInfo.track" formControlName="track">
+          <ion-option value="os">OS</ion-option>
+          <ion-option value="sd">SD</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <button ion-button block [disabled]="!registForm.valid">Create Account</button>
+  </form>
+</ion-content>
